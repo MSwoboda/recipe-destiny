@@ -14,7 +14,7 @@
       
     <h2>Search for recipies and nutrition facts </h2>
  </div>
- 
+ <div id = "container">
  <div id="employee-table">
         <table class="table">
            
@@ -31,7 +31,7 @@
         </div>
         <div class="form-check form-check-inline">
             <thead>
-            <label for="dietOptions">Calories</label>
+            <label for="cals">Calories</label>
           </thead>
                     <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
             <label class="form-check-label" for="inlineCheckbox1">Under 500</label>
@@ -45,7 +45,7 @@
             <label class="form-check-label" for="inlineCheckbox3">Under 1500</label>
           </div>
           <div class="form-group col-md-4">
-              <label for="inputState">Cuisine type</label>
+              <h1>Cuisine type</h1>
               <select id="inputState" class="form-control">
                 <option selected>Choose...</option>
                 <option>American</option>
@@ -60,6 +60,34 @@
                 <option>Italian</option>
                 <option>Japanese</option>
                 <option>...</option>
+                <br>
+                <br>
+                <div class="form-check form-check">
+                <input class="form-check-input" type="checkbox" id="defaultCheck1" value="option1">
+                  <label class="form-check-label" for="defaultCheck1">Vegan</label>
+                </div>
+                <div class="form-check form-check">
+                  <input class="form-check-input" type="checkbox" id="defaultCheck1" value="option2">
+                  <label class="form-check-label" for="defaultCheck1">Vegetarian</label>
+                </div>
+                <div class="form-check form-check">
+                  <input class="form-check-input" type="checkbox" id="defaultCheck1" value="option3" >
+                  <label class="form-check-label" for="defaultCheck1">Low-Fat</label>
+                </div>
+                <div class="form-check form-check">
+                  <input class="form-check-input" type="checkbox" id="defaultCheck1" value="option2">
+                  <label class="form-check-label" for="defaultCheck1">Low-Sodium</label>
+                </div>  <div class="form-check form-check">
+                  <input class="form-check-input" type="checkbox" id="defaultCheck1" value="option2">
+                  <label class="form-check-label" for="defaultCheck1">Gluten-free</label>
+                </div>  <div class="form-check form-check">
+                  <input class="form-check-input" type="checkbox" id="defaultCheck1" value="option2">
+                  <label class="form-check-label" for="defaultCheck1">Keto</label>
+                </div>  <div class="form-check form-check">
+                  <input class="form-check-input" type="checkbox" id="defaultCheck1" value="option2">
+                  <label class="form-check-label" for="defaultCheck1">Kosher</label>
+                </div>  <div class="form-check form-check">
+                  
                 
 
 
@@ -68,12 +96,14 @@
 
               </select>
             </div>
+            <br>
  
         <button type="submit" class="btn btn-primary" id="submit">Submit</button>
       </form>
-      <container>
-        <div id="results"></div>
-      </container>
+    </div>
+      <div id ="container">
+        <div ></div>
+      </div>
       
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

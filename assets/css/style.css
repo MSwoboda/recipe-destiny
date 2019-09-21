@@ -1,6 +1,5 @@
-#results 
-{
-
+#container {
+flex: inline;
   border: 15px solid black;
   
 }
