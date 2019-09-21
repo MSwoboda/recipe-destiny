@@ -7,7 +7,24 @@
     <title>Document</title>
 </head>
 <body>
-    <p>hellow</p>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        var queryURL = "https://api.edamam.com/search?q=chicken&app_id=60bec2ae&app_key=411a6ce9c56353f66bde23265db8f48d"
+
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function(response){
+            console.log(response);
+            
+        })
+
+
+    
+
+    </script>
     
 </body>
 </html>
