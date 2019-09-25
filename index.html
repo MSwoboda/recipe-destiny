@@ -6,8 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/style.css">  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/css/bootstrap-multiselect.css">
+
     <title>Project 1</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+   
+
+
 </head>
 
 <body>
@@ -16,56 +21,41 @@
 
         <h2>Search for recipies and nutrition facts </h2>
     </div>
-    <div id="container">
-        <div id="employee-table">
-            <table class="table">
+    
 
-                <tbody>
-
-                </tbody>
-            </table>
-        </div>
-
+  <div class = "flex-container">
         <form>
             <div class="form-group">
                 <label for="employee-name">Recipe Search</label>
-                <input type="name" class="form-control" id="Name" aria-describedby="emailHelp" placeholder="Enter Name">
+                <input type="name" class="form-control" id="Name" placeholder="Enter Name" size="25">
             </div>
-            <div class="form-check form-check-inline">
-                <thead>
-                    <label for="cals">Calories</label>
-                </thead>
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                <label class="form-check-label" for="inlineCheckbox1">Under 500</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                <label class="form-check-label" for="inlineCheckbox2">Under 1000</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                <label class="form-check-label" for="inlineCheckbox3">Under 1500</label>
-            </div>
-            <div class="form-group col-md-4">
+            
+            <div id = "calories">
+                <label for = "minCal">Calories</label>
+                <input type="name" class="form-control" id="minCal" placeholder="Min" size="5">
+                <input type="name" class="form-control" id="maxCal" placeholder="Max" size="5">           
+           </div>
+
+           <div id = "cuisineType">
                 <h1>Cuisine type</h1>
-                <select id="inputState" class="form-control">
-                <option selected>Choose...</option>
-                <option>American</option>
-                <option>Asian</option>
-                <option>British</option>
-                <option>Carribean</option>
-                <option>Central Europe</option>
-                <option>Chinese</option>
-                <option>Eastern europe</option>
-                <option>French</option>
-                <option>Indian</option>
-                <option>Italian</option>
-                <option>Japanese</option>
-                <option>...</option>
-                <br>
-                <br>
+                <select class="selectpicker" multiple="multiple">               
+                    <option selected>Choose...</option>
+                      <option value="american">American</option>
+                      <option value="asian">Asian</option>
+                      <option value="british">British</option>
+                      <option value="carribean">Carribean</option>
+                      <option value="central europe">Central Europe</option>
+                      <option value="chinese">Chinese</option>
+                      <option value="eastern europe">Eastern europe</option>
+                      <option value="french">French</option>
+                      <option value="indian">Indian</option>
+                      <option value="italian">Italian</option>
+                      <option value="japanese">Japanese</option>
+                      <option>...</option>
+                </select>
+            </div>
                 <div class="form-check form-check">
-                <input class="form-check-input" type="checkbox" id="defaultCheck1" value="option1">
+                <input class="form-check-input" type="checkbox" id="Vegan" value="option1">
                   <label class="form-check-label" for="defaultCheck1">Vegan</label>
                 </div>
                 <div class="form-check form-check">
@@ -90,27 +80,75 @@
                   <label class="form-check-label" for="defaultCheck1">Kosher</label>
                 </div>  <div class="form-check form-check">
                   
+                    <select id="example-getting-started" multiple="multiple">
+                        <option value="cheese">Cheese</option>
+                        <option value="tomatoes">Tomatoes</option>
+                        <option value="mozarella">Mozzarella</option>
+                        <option value="mushrooms">Mushrooms</option>
+                        <option value="pepperoni">Pepperoni</option>
+                        <option value="onions">Onions</option>
+                    </select>
                 
 
 
 
   
 
-              </select>
-            </div>
+            
+            
             <br>
 
             <button type="submit" class="btn btn-primary" id="submit">Submit</button>
         </form>
     </div>
-    <div id="container">
-        <div></div>
-    </div>
+        <div id="employee-table">
+            <table class="table">
 
+                <tbody>
 
+                </tbody>
+            </table>
+        </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.15/js/bootstrap-multiselect.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
+
+    <!-- <script src ="assets/js/bootstrap.js"></script>
+    <script src= "assets/js/app.js"></script> -->
+    
 </body>
 
 </html>
+
+
+<!-----    dropdown menu selector
+  <select class="selectpicker" multiple data-live-search="true">
+    <option value="american">American</option>
+    <option value="asian">Asian</option>
+    <option value="british">British</option>
+    <option value="carribean">Carribean</option>
+    <option value="central europe">Central Europe</option>
+    <option value="chinese">Chinese</option>
+    <option value="eastern europe">Eastern europe</option>
+    <option value="french">French</option>
+    <option value="indian">Indian</option>
+    <option value="italian">Italian</option>
+    <option value="japanese">Japanese</option>
+</select>
+
+<script type="text/javascript">
+$(document).ready(function () {
+    $('select').selectpicker();
+});
+</script> ---------->
