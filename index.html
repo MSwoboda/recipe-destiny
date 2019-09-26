@@ -127,11 +127,28 @@
                 let rCals = Math.floor(recipeArray[index].recipe.calories);
                 let rImg = recipeArray[index].recipe.image;
                 let rLink = recipeArray[index].recipe.url;
-                let rRecipeList = `<ul>`
+
+                ///
+                let rIngredientList = `<ul>`
                 for (let i = 0; i < recipeArray[index].recipe.ingredients.length; i++) {
-                    rRecipeList += `<li>${recipeArray[index].recipe.ingredients[i].food} </li>`
+                    rIngredientList += `<li>${recipeArray[index].recipe.ingredients[i].food} </li>`
                 }
-                rRecipeList += `</ul>`
+                rIngredientList += `</ul>`
+                    ///
+
+                let rTagList = ``;
+                let healthLabels = recipeArray[index].recipe.healthLabels; //Array
+
+                if (healthLabels.includes("Gluten-Free")) {
+                    rTagList += `<span class="badge badge-danger">Gluten-Free</span>`;
+                }
+
+                if (healthLabels.includes("Egg-Free")) {
+                    rTagList += `<span class="badge badge-success">Egg-Free</span>`;
+
+                }
+
+
 
                 $("#recipe-list").append(
                         `<div class="accordion" id="recipe-list">
@@ -141,19 +158,18 @@
                     <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${index}" aria-expanded="true" aria-controls="collapse${index}">
                      ${rLabel}
                       </button> Calories: ${rCals}kcal
+                      ${rTagList}
                     </h6>
-            </div>
-
-            <div id="collapse${index}" class="collapse" aria-labelledby="heading${index}" data-parent="#recipe-list">
-                <div class="card-body">
-
+                    </div>
+                    <div id="collapse${index}" class="collapse" aria-labelledby="heading${index}" data-parent="#recipe-list">
+                    <div class="card-body">
                     <div class="row">
                         <div class="col-3">
                             <img src=${rImg} class="img-fluid" style="max-width:100%;" alt="Recipe Image :)">
                         </div>
                         <div class="col-9 ">
                             <h4>Ingredients:</h4>
-                            ${rRecipeList}
+                            ${rIngredientList}
                             <a class="btn btn-primary" href=${rLink} role="button">Recipe</a>
                         </div>
                     </div>
