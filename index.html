@@ -8,7 +8,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="style.css">
     <title>Recipe Search</title>
 </head>
 
@@ -47,15 +47,56 @@
         <button class="btn btn-primary" type="submit" id="submit">Submit form</button>
     </form>
 
+    <br>
 
 
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h6 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Spicy Chicken
+              </button> Calories: 510kcal
+
+                    <span class="badge badge-success">Vegan</span>
+                    <span class="badge badge-danger">Spicy</span>
+
+                </h6>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div class="card-body">
+
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="https://www.edamam.com/web-img/e12/e12b8c5581226d7639168f41d126f2ff.jpg" class="img-fluid" style="max-width:100%;" alt="Recipe Image :)">
+                        </div>
+                        <div class="col-9 ">
+                            <h4>Ingredients:</h4>
+                            <ul>
+
+                                <li>jdkajdlkasd</li>
+                                <li>adhlsahdlaj</li>
+                                <li>sfdasfd</li>
+                                <li>asdaf</li>
+
+                            </ul>
+
+                            <a class="btn btn-primary" href="#" role="button">Recipe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
 
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -85,13 +126,14 @@
         let queryURL = `https://api.edamam.com/search?`
 
         //Get Form Data
-        let q = "chicken" //$("#foodName").val();
-        let cousineType = "chinese" //$("#cousineType").val();
+        //Query String
+        let q = "chicken" //$("#foodName ").val();
+        let cousineType = "chinese" //$("#cousineType ").val();
 
-        var caloriesMin = 500 //$("#caloriesMin").val();
-        var caloriesMax = 1000 //$("#caloriesMax").val();
+        var caloriesMin = 500 //$("#caloriesMin ").val();
+        var caloriesMax = 1000 //$("#caloriesMax ").val();
 
-        let health = ["peanut-free", "tree-nut-free"];
+        let health = ["peanut-free ", "tree-nut-free"];
 
         $.ajax({
             url: queryURL,
@@ -104,17 +146,16 @@
                 calories: `${caloriesMin}-${caloriesMax}`
             },
             success: function(response) {
-                console.log(response)
-
-
-            );
-
-        },
-        error: function(xhr) {
-            console.log("error")
-        }
+                console.log(response);
+            },
+            error: function(xhr) {
+                console.log(xhr);
+            }
         });
     </script>
+
+
+
 </body>
 
 </html>
