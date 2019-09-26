@@ -3,3 +3,6 @@ flex: inline;
   border: 15px solid black;
   
 }
+.form-control {
+  width: 24%;
+}
