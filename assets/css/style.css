@@ -1,8 +1,20 @@
-#container {
-flex: inline;
-  border: 15px solid black;
-  
+.flex-container {
+  display: inline;
+  border: 2px solid black;
+} 
+
+
+
+
+#calories,
+#recipe,
+#cuisineType,
+#healthLabels{
+  float: left;
+  margin: 6%;
 }
-.form-control {
-  width: 24%;
-}
+
+
+
+
+
