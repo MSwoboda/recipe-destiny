@@ -176,7 +176,7 @@
                         `<div class="accordion" id="recipe-list">
                     <div class="card">
                     <div class="card-header" id="heading${index}">
-                    <h6 class="mb-0 p-2">
+                    <h6 class="mb-0">
                     <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${index}" aria-expanded="true" aria-controls="collapse${index}">
                      ${rLabel}
                       </button> Calories: ${rCals}kcal
@@ -201,6 +201,8 @@
                         <div class="col-6 ">
                         <br>
                         <br>
+                        <br>
+                        <br>
                                 <div id="chart${rLabel}" ></div>		
 
                     </div>
@@ -219,7 +221,7 @@
                     "visits": recipeArray[index].recipe.totalDaily.CHOCDF.quantity
                 }, {
                     "country": "China",
-                    "visits": 1882
+                    "visits": recipeArray[index].recipe.totalDaily.CHOCDF.quantity
                 }, {
                     "country": "Japan",
                     "visits": 1809
@@ -278,8 +280,8 @@
                 categoryAxis.dataFields.category = "country";
                 categoryAxis.renderer.grid.template.location = 0;
                 categoryAxis.renderer.minGridDistance = 30;
-                categoryAxis.renderer.labels.template.horizontalCenter = "right";
-                categoryAxis.renderer.labels.template.verticalCenter = "middle";
+                categoryAxis.renderer.labels.template.horizontalCenter = "left";
+                categoryAxis.renderer.labels.template.verticalCenter = "bottom";
                 categoryAxis.renderer.labels.template.rotation = 270;
                 categoryAxis.tooltip.disabled = true;
                 categoryAxis.renderer.minHeight = 100;
