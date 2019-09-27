@@ -10,10 +10,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <title>Recipe Search</title>
+
+    <!-- Resources -->
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
 </head>
 
 <body>
-
 
     <form class="needs-validation" novalidate>
         <div class="form-row">
@@ -59,6 +64,11 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
 
+    <!-- Resources -->
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/material.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
 
     <script>
         // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -89,7 +99,7 @@
 
         //Get Form Data
         //Query String
-        let q = "chicken" //$("#foodName ").val();
+        let q = "vegan" //$("#foodName ").val();
         let cousineType = "chinese" //$("#cousineType ").val();
 
         var caloriesMin = 500 //$("#caloriesMin ").val();
@@ -142,12 +152,23 @@
                 let healthLabels = recipeArray[index].recipe.healthLabels; //Array
 
                 if (healthLabels.includes("Gluten-Free")) {
-                    rTagList += `<span class="badge badge-danger">Gluten-Free</span>`;
+                    rTagList += `<span class="badge badge-pill badge-danger mr-2">Gluten-Free</span>`;
                 }
 
-                if (healthLabels.includes("Egg-Free")) {
-                    rTagList += `<span class="badge badge-success">Egg-Free</span>`;
+                if (healthLabels.includes("Keto")) {
+                    rTagList += `<span class="badge badge-pill badge-warning mr-2">Keto</span>`;
+                }
 
+                if (healthLabels.includes("Vegan")) {
+                    rTagList += `<span class="badge badge-pill badge-success mr-2">Vegan</span>`;
+                }
+
+                if (healthLabels.includes("Low-Sodium")) {
+                    rTagList += `<span class="badge badge-pill badge-primary mr-2">Low-Sodium</span>`;
+                }
+
+                if (healthLabels.includes("Vegetarian")) {
+                    rTagList += `<span class="badge badge-pill badge-info">Vegetarian</span>`;
                 }
 
 
@@ -165,22 +186,75 @@
                     </div>
                     <div id="collapse${index}" class="collapse" aria-labelledby="heading${index}" data-parent="#recipe-list">
                     <div class="card-body">
+
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-3 text-center">
                             <img src=${rImg} class="img-fluid" style="max-width:100%;" alt="Recipe Image :)">
+                            <br>
+                            <br>
+                            <a class="btn btn-primary center-block" href=${rLink} role="button">Recipe</a>
+
                         </div>
-                        <div class="col-9 ">
+                        <div class="col-3 ">
                             <h4>Ingredients:</h4>
                             ${rIngredientList}
-                            <a class="btn btn-primary" href=${rLink} role="button">Recipe</a>
                         </div>
+                        <div class="col-6 ">
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                                <div id="chart${rLabel}" ></div>		
+
                     </div>
+
+                    </div>
+
                 </div>
             </div>
         </div>
     </div>`
                     ) //end of template
 
+                // Add data
+                myData = [{
+                    "country": "Carbs",
+                    "visits": recipeArray[index].recipe.totalDaily.CHOCDF.quantity
+                }, {
+                    "country": "Saturated Fat",
+                    "visits": recipeArray[index].recipe.totalDaily.FASAT.quantity
+                }, {
+                    "country": "Fat",
+                    "visits": recipeArray[index].recipe.totalDaily.FAT.quantity
+                }, {
+                    "country": "Iron",
+                    "visits": recipeArray[index].recipe.totalDaily.FE.quantity
+                }, {
+                    "country": "Fiber",
+                    "visits": recipeArray[index].recipe.totalDaily.FIBTG.quantity
+                }, {
+                    "country": "Sodium",
+                    "visits": recipeArray[index].recipe.totalDaily.NA.quantity
+                }, {
+                    "country": "Protein",
+                    "visits": recipeArray[index].recipe.totalDaily.PROCNT.quantity
+                }, {
+                //     "country": "Spain",
+                //     "visits": recipeArray[index].recipe.totalDaily.CHOCDF.quantity
+                // }, {
+                //     "country": "Netherlands",
+                //     "visits": recipeArray[index].recipe.totalDaily.CHOCDF.quantity
+                // }, {
+                //     "country": "Russia",
+                //     "visits": recipeArray[index].recipe.totalDaily.CHOCDF.quantity
+                // }, {
+                //     "country": "South Korea",
+                //     "visits": recipeArray[index].recipe.totalDaily.CHOCDF.quantity443
+                // }, {
+                //     "country": "Canada",
+                //     "visits": recipeArray[index].recipe.totalDaily.CHOCDF.quantity
+                }];
+                createChart(myData, "chart" + rLabel);
             }
         }
     </script>
@@ -188,6 +262,68 @@
   
   
 
+    <!-- Chart code -->
+    <script>
+        function createChart(cNutrients, cName) {
+
+            am4core.ready(function() {
+
+                // Themes begin
+                am4core.useTheme(am4themes_animated);
+                // Themes end
+
+                // Create chart instance
+                var chart = am4core.create(cName, am4charts.XYChart);
+                //chart.scrollbarX = new am4core.Scrollbar();
+
+                // Add data
+                chart.data = cNutrients;
+
+                // Create axes
+                var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+                categoryAxis.dataFields.category = "country";
+                categoryAxis.renderer.grid.template.location = 0;
+                categoryAxis.renderer.minGridDistance = 30;
+                categoryAxis.renderer.labels.template.horizontalCenter = "right";
+                categoryAxis.renderer.labels.template.verticalCenter = "middle";
+                categoryAxis.renderer.labels.template.rotation = 270;
+                categoryAxis.tooltip.disabled = true;
+                categoryAxis.renderer.minHeight = 100;
+
+                var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+                valueAxis.renderer.minWidth = 5;
+
+                // Create series
+                var series = chart.series.push(new am4charts.ColumnSeries());
+                series.sequencedInterpolation = true;
+                series.dataFields.valueY = "visits";
+                series.dataFields.categoryX = "country";
+                series.tooltipText = "[{categoryX}: bold]{valueY}[/]";
+                series.columns.template.strokeWidth = 0;
+
+                series.tooltip.pointerOrientation = "vertical";
+
+                series.columns.template.column.cornerRadiusTopLeft = 10;
+                series.columns.template.column.cornerRadiusTopRight = 10;
+                series.columns.template.column.fillOpacity = 0.8;
+
+                // on hover, make corner radiuses bigger
+                var hoverState = series.columns.template.column.states.create("hover");
+                hoverState.properties.cornerRadiusTopLeft = 0;
+                hoverState.properties.cornerRadiusTopRight = 0;
+                hoverState.properties.fillOpacity = 1;
+
+                series.columns.template.adapter.add("fill", function(fill, target) {
+                    return chart.colors.getIndex(target.dataItem.index);
+                });
+                chart.responsive.enable = true;
+                // Cursor
+                chart.cursor = new am4charts.XYCursor();
+
+            }); // end am4core.ready()
+
+        }
+    </script>
 
 
 </body>
