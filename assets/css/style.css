@@ -1,18 +1,20 @@
 .flex-container {
-  display: inline;
   border: 2px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 5%;
+  padding: 5%;
+  position: sticky;
+  top:0;
 } 
 
-
-
-
-#calories,
-#recipe,
-#cuisineType,
-#healthLabels{
-  float: left;
-  margin: 6%;
+.btn-primary{
+  font-size: 30px;
+  width: 150px;
 }
+
+
 
 
 
