@@ -48,47 +48,9 @@
     </form>
 
     <br>
+    <div id="recipe-list"></div>
 
 
-    <div class="accordion" id="accordionExample">
-        <div class="card">
-            <div class="card-header" id="headingOne">
-                <h6 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-              Spicy Chicken
-              </button> Calories: 510kcal
-
-    
-
-                </h6>
-            </div>
-
-            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                <div class="card-body">
-
-                    <div class="row">
-                        <div class="col-3">
-                            <img src="https://www.edamam.com/web-img/e12/e12b8c5581226d7639168f41d126f2ff.jpg" class="img-fluid" style="max-width:100%;" alt="Recipe Image :)">
-                        </div>
-                        <div class="col-9 ">
-                            <h4>Ingredients:</h4>
-                            <ul>
-
-                                <li>jdkajdlkasd</li>
-                                <li>adhlsahdlaj</li>
-                                <li>sfdasfd</li>
-                                <li>asdaf</li>
-
-                            </ul>
-
-                            <a class="btn btn-primary" href="#" role="button">Recipe</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -134,6 +96,7 @@
 
         let health = ["peanut-free ", "tree-nut-free"];
 
+
         $.ajax({
             url: queryURL,
             method: "GET",
@@ -146,17 +109,8 @@
             },
             success: function(response) {
                 console.log(response);
-                let rTaglist = ``;
-        
-                let healthLabels = response.hits.recipe.healthLabels; //array
-         
-        
-                if (healthLabels.includes("Gluten-Free")) {
-                    rTaglist += `<span class="badge badge-danger">Danger</span>`;
-                }
-                if (healthLabels.includes("Peanuts-Free")) {
-                    rTaglist += `<span class="badge badge-light">Light</span>`;
-                }
+
+                addRecipes(response.hits);
             },
             error: function(xhr) {
                 console.log(xhr);
@@ -164,7 +118,70 @@
             }
         });
 
+        function addRecipes(recipeArray) {
 
+            console.log(recipeArray);
+
+            for (let index = 0; index < recipeArray.length; index++) {
+
+                let rLabel = recipeArray[index].recipe.label;
+                let rCals = Math.floor(recipeArray[index].recipe.calories);
+                let rImg = recipeArray[index].recipe.image;
+                let rLink = recipeArray[index].recipe.url;
+
+                ///
+                let rIngredientList = `<ul>`
+                for (let i = 0; i < recipeArray[index].recipe.ingredients.length; i++) {
+                    rIngredientList += `<li>${recipeArray[index].recipe.ingredients[i].food} </li>`
+                }
+                rIngredientList += `</ul>`
+                    ///
+
+                let rTagList = ``;
+                let healthLabels = recipeArray[index].recipe.healthLabels; //Array
+
+                if (healthLabels.includes("Gluten-Free")) {
+                    rTagList += `<span class="badge badge-danger">Gluten-Free</span>`;
+                }
+
+                if (healthLabels.includes("Egg-Free")) {
+                    rTagList += `<span class="badge badge-success">Egg-Free</span>`;
+
+                }
+
+
+
+                $("#recipe-list").append(
+                        `<div class="accordion" id="recipe-list">
+                    <div class="card">
+                    <div class="card-header" id="heading${index}">
+                    <h6 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${index}" aria-expanded="true" aria-controls="collapse${index}">
+                     ${rLabel}
+                      </button> Calories: ${rCals}kcal
+                      ${rTagList}
+                    </h6>
+                    </div>
+                    <div id="collapse${index}" class="collapse" aria-labelledby="heading${index}" data-parent="#recipe-list">
+                    <div class="card-body">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src=${rImg} class="img-fluid" style="max-width:100%;" alt="Recipe Image :)">
+                        </div>
+                        <div class="col-9 ">
+                            <h4>Ingredients:</h4>
+                            ${rIngredientList}
+                            <a class="btn btn-primary" href=${rLink} role="button">Recipe</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`
+                    ) //end of template
+
+            }
+        }
     </script>
     
   
