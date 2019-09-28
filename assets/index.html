@@ -17,25 +17,92 @@
 </head>
 
 <body>
-    <select class="selectpicker" multiple data-live-search="true">
-            <option value="american">American</option>
-            <option value="asian">Asian</option>
-            <option value="british">British</option>
-            <option value="carribean">Carribean</option>
-            <option value="central europe">Central Europe</option>
-            <option value="chinese">Chinese</option>
-            <option value="eastern europe">Eastern europe</option>
-            <option value="french">French</option>
-            <option value="indian">Indian</option>
-            <option value="italian">Italian</option>
-            <option value="japanese">Japanese</option>
-    </select>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $('select').selectpicker();
-        });
-    </script>
+    <div id="header">
+
+        <h2>Search for recipies and nutrition facts </h2>
+    </div>
+
+
+    <div class="flex-container">
+        <div id="recipe">
+            <h1>Recipe Name</h1>
+            <input type="name" class="form-control-1" id="Name" placeholder="Enter Name" size="25">
+        </div>
+
+        <div id="calories">
+            <h1>Calories</h1>
+            <input type="name" class="form-control-2" id="minCal" placeholder="Min" size="5">
+            <input type="name" class="form-control-2" id="maxCal" placeholder="Max" size="5">
+        </div>
+
+        <div id="cuisineType">
+            <h1>Cuisine type</h1>
+            <select class="selectpicker" multiple data-live-search="true">
+        <option value="american">American</option>
+        <option value="asian">Asian</option>
+        <option value="british">British</option>
+        <option value="carribean">Carribean</option>
+        <option value="central europe">Central Europe</option>
+        <option value="chinese">Chinese</option>
+        <option value="eastern europe">Eastern europe</option>
+        <option value="french">French</option>
+        <option value="indian">Indian</option>
+        <option value="italian">Italian</option>
+        <option value="japanese">Japanese</option>
+        <option>...</option>
+      </select>
+        </div>
+
+
+        <div id="healthLabels">
+            <h1>Heath Labels</h1>
+            <select class="selectpicker" multiple data-live-search="true">
+        <option value="vegan">Vegan</option>
+        <option value="vegetarian">Vegetarian</option>
+        <option value="lowFat">Low-Fat</option>
+        <option value="lowSodium">Low-Sodium</option>
+        <option value="glutenFree">Gluten-Free</option>
+        <option value="keto">Keto</option>
+        <option value="kosher">Kosher</option>
+      </select>
+        </div>
+
+        <div id="Submit">
+            <br>
+            <button type="button" class="btn btn-primary" id="submit">Submit</button>
+        </div>
+
+    </div>
+
+    <br>
+    <div id="recipe-list"></div>
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
+
+    <!-- Resources -->
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/material.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+    <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/app.js"></script>
+
+
 </body>
 
 </html>
