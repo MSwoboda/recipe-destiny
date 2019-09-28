@@ -1,17 +1,15 @@
-$("#submit").click(function(event) {
-    event.preventDefault();
-});
+
 
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
+(function () {
     'use strict';
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = document.getElementsByClassName('needs-validation');
         // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function(form) {
-            form.addEventListener('submit', function(event) {
+        var validation = Array.prototype.filter.call(forms, function (form) {
+            form.addEventListener('submit', function (event) {
                 if (form.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
@@ -30,34 +28,46 @@ let queryURL = `https://api.edamam.com/search?`
 
 //Get Form Data
 //Query String
-let q = "vegan" //$("#foodName ").val();
-let cousineType = "chinese" //$("#cousineType ").val();
 
-var caloriesMin = 500 //$("#caloriesMin ").val();
-var caloriesMax = 1000 //$("#caloriesMax ").val();
+$("#submit").on("click", function () {
 
-let health = ["peanut-free ", "tree-nut-free"];
+    search = $("#Name").val().trim();
 
 
-$.ajax({
-    url: queryURL,
-    method: "GET",
-    data: {
-        q,
-        app_id,
-        app_key,
-        health,
-        calories: `${caloriesMin}-${caloriesMax}`
-    },
-    success: function(response) {
-        console.log(response);
+    let q = $("#Name").val().trim(); //$("#foodName ").val();
+    let cuisineType = $('.dropdown-toggle').attr("title").split(","); //$("#cousineType ").val();
+    console.log(cuisineType);
+    let health = $('.dropdown-toggle').attr("title").split(",");
+    console.log(health);
+    
+    // var caloriesMin = 500 //$("#caloriesMin ").val();
+    // var caloriesMax = 1000 //$("#caloriesMax ").val();
 
-        addRecipes(response.hits);
-    },
-    error: function(xhr) {
-        console.log(xhr);
-    }
+    // let health = ["peanut-free ", "tree-nut-free"];
+
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+        data: {
+            q,
+            app_id,
+            app_key,
+            cuisineType,
+            health,
+            // calories: `${caloriesMin}-${caloriesMax}`
+        },
+        success: function (response) {
+            console.log(response);
+
+            addRecipes(response.hits);
+
+        },
+        error: function (xhr) {
+            console.log(xhr);
+        }
+    });
 });
+
 
 function addRecipes(recipeArray) {
 
@@ -76,7 +86,7 @@ function addRecipes(recipeArray) {
             rIngredientList += `<li>${recipeArray[index].recipe.ingredients[i].food} </li>`
         }
         rIngredientList += `</ul>`
-            ///
+        ///
 
         let rTagList = ``;
         let healthLabels = recipeArray[index].recipe.healthLabels; //Array
@@ -104,7 +114,7 @@ function addRecipes(recipeArray) {
 
 
         $("#recipe-list").append(
-                `<div class="accordion" id="recipe-list">
+            `<div class="accordion" id="recipe-list">
             <div class="card">
             <div class="card-header" id="heading${index}">
             <h6 class="mb-0">
@@ -144,31 +154,31 @@ function addRecipes(recipeArray) {
     </div>
 </div>
 </div>`
-            ) //end of template
+        ) //end of template
 
         // Add data
         myData = [{
-                "country": "Carbs",
-                "visits": recipeArray[index].recipe.totalDaily.CHOCDF.quantity
-            }, {
-                "country": "Saturated Fat",
-                "visits": recipeArray[index].recipe.totalDaily.FASAT.quantity
-            }, {
-                "country": "Fat",
-                "visits": recipeArray[index].recipe.totalDaily.FAT.quantity
-            }, {
-                "country": "Iron",
-                "visits": recipeArray[index].recipe.totalDaily.FE.quantity
-            }, {
-                "country": "Fiber",
-                "visits": recipeArray[index].recipe.totalDaily.FIBTG.quantity
-            }, {
-                "country": "Sodium",
-                "visits": recipeArray[index].recipe.totalDaily.NA.quantity
-            }, {
-                "country": "Protein",
-                "visits": recipeArray[index].recipe.totalDaily.PROCNT.quantity
-            }
+            "country": "Carbs",
+            "visits": recipeArray[index].recipe.totalDaily.CHOCDF.quantity
+        }, {
+            "country": "Saturated Fat",
+            "visits": recipeArray[index].recipe.totalDaily.FASAT.quantity
+        }, {
+            "country": "Fat",
+            "visits": recipeArray[index].recipe.totalDaily.FAT.quantity
+        }, {
+            "country": "Iron",
+            "visits": recipeArray[index].recipe.totalDaily.FE.quantity
+        }, {
+            "country": "Fiber",
+            "visits": recipeArray[index].recipe.totalDaily.FIBTG.quantity
+        }, {
+            "country": "Sodium",
+            "visits": recipeArray[index].recipe.totalDaily.NA.quantity
+        }, {
+            "country": "Protein",
+            "visits": recipeArray[index].recipe.totalDaily.PROCNT.quantity
+        }
             // , {
             //     "country": "Spain",
             //     "visits": 711
@@ -190,9 +200,11 @@ function addRecipes(recipeArray) {
     }
 }
 
+
+
 function createChart(cNutrients, cName) {
 
-    am4core.ready(function() {
+    am4core.ready(function () {
 
         // Themes begin
         am4core.useTheme(am4themes_animated);
@@ -239,7 +251,7 @@ function createChart(cNutrients, cName) {
         hoverState.properties.cornerRadiusTopRight = 0;
         hoverState.properties.fillOpacity = 1;
 
-        series.columns.template.adapter.add("fill", function(fill, target) {
+        series.columns.template.adapter.add("fill", function (fill, target) {
             return chart.colors.getIndex(target.dataItem.index);
         });
         chart.responsive.enable = true;
