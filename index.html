@@ -204,7 +204,7 @@
                         <br>
                         <br>
                         <br>
-                                <div id="chart${rLabel}" ></div>		
+                                <div id="chart${rLabel}"  style="width:100%; height:100%; position:relative; right: 80px; bottom: 70px;" ></div>		
 
                     </div>
 
@@ -287,11 +287,11 @@
                 categoryAxis.renderer.labels.template.horizontalCenter = "right";
                 categoryAxis.renderer.labels.template.verticalCenter = "middle";
                 categoryAxis.renderer.labels.template.rotation = 270;
-                categoryAxis.tooltip.disabled = true;
+                categoryAxis.tooltip.disabled = false;
                 categoryAxis.renderer.minHeight = 100;
 
                 var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
-                valueAxis.renderer.minWidth = 5;
+                valueAxis.renderer.minWidth = 100;
 
                 // Create series
                 var series = chart.series.push(new am4charts.ColumnSeries());
