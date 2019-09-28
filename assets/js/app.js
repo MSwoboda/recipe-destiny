@@ -1,5 +1,36 @@
-$("#submit").click(function(event) {
-    event.preventDefault();
+$(document).on("click", ".sendEmail", function(event) {
+
+    console.log("sending email");
+    let emailLabel = $(this).attr("recipe-label");
+
+    console.log(emailLabel);
+
+    let emailAddress = $("#email").val();
+    console.log(emailAddress);
+
+    // code fragment
+    var data = {
+        service_id: 'default_service',
+        template_id: 'template_341Z50JL',
+        user_id: 'user_x44tByH9JFM3tprvm5WzC',
+        template_params: {
+            'recipe_label': emailLabel,
+            'user_email': emailAddress,
+            'recipe_link': $(this).attr('recipe-link'),
+            'g-recaptcha-response': '03AHJ_ASjnLA214KSNKFJAK12sfKASfehbmfd...'
+        }
+    };
+
+    $.ajax('https://api.emailjs.com/api/v1.0/email/send', {
+        type: 'POST',
+        data: JSON.stringify(data),
+        contentType: 'application/json'
+    }).done(function() {
+        alert('Your mail is sent!');
+    }).fail(function(error) {
+        alert('Oops... ' + JSON.stringify(error));
+    });
+
 });
 
 
@@ -20,7 +51,7 @@ $("#submit").click(function(event) {
             }, false);
         });
     }, false);
-})();
+});
 
 
 //Search String and API Data
@@ -51,7 +82,6 @@ $.ajax({
     },
     success: function(response) {
         console.log(response);
-
         addRecipes(response.hits);
     },
     error: function(xhr) {
@@ -123,7 +153,16 @@ function addRecipes(recipeArray) {
                     <br>
                     <br>
                     <a class="btn btn-primary center-block" target="_blank" href=${rLink} role="button">Recipe</a>
+                    <br>
+                    <br>
 
+                    <div class="input-group mb-3">
+                    <input type="email" class="form-control" id="email" placeholder="email@email.com" aria-label="Recipient's email" aria-describedby="basic-addon2">
+              
+                    <div class="input-group-append mb-2">
+                        <button class="btn btn-outline-primary sendEmail" recipe-link="${rLink}" recipe-label="${rLabel}" type="button">Send It!</button>
+                    </div>
+                </div>
                 </div>
                 <div class="col-3 ">
                     <h4>Ingredients:</h4>
