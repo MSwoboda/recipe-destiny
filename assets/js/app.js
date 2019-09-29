@@ -36,6 +36,7 @@ $(document).on("click", ".sendEmail", function(event) {
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
+
     'use strict';
     window.addEventListener('load', function() {
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -71,12 +72,14 @@ let health = ["peanut-free ", "tree-nut-free"];
 
 
 $.ajax({
+
     url: queryURL,
     method: "GET",
     data: {
         q,
         app_id,
         app_key,
+        cousineType,
         health,
         calories: `${caloriesMin}-${caloriesMax}`
     },
@@ -90,6 +93,7 @@ $.ajax({
 });
 
 function addRecipes(recipeArray) {
+
 
     console.log(recipeArray);
 
@@ -230,6 +234,7 @@ function addRecipes(recipeArray) {
 }
 
 function createChart(cNutrients, cName) {
+
 
     am4core.ready(function() {
 
