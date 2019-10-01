@@ -32,6 +32,7 @@ $(document).on("click", ".sendEmail", function(event) {
         alert('Oops... ' + JSON.stringify(error));
     });
 
+
 });
 
 
@@ -63,35 +64,46 @@ let queryURL = `https://api.edamam.com/search?`
 
 //Get Form Data
 //Query String
-let q = "vegan" //$("#foodName ").val();
-let cousineType = "chinese" //$("#cousineType ").val();
 
-var caloriesMin = 500 //$("#caloriesMin ").val();
-var caloriesMax = 1000 //$("#caloriesMax ").val();
+$("#submit").on("click", function() {
 
-let health = ["peanut-free ", "tree-nut-free"];
+    search = $("#Name").val().trim();
 
 
-$.ajax({
+    let q = $("#Name").val().trim(); //$("#foodName ").val();
+    let cuisineType = $('.dropdown-toggle').attr("title").split(","); //$("#cousineType ").val();
+    console.log(cuisineType);
+    let health = $('.dropdown-toggle').attr("title").split(",");
+    console.log(health);
 
-    url: queryURL,
-    method: "GET",
-    data: {
-        q,
-        app_id,
-        app_key,
-        cousineType,
-        health,
-        calories: `${caloriesMin}-${caloriesMax}`
-    },
-    success: function(response) {
-        console.log(response);
-        addRecipes(response.hits);
-    },
-    error: function(xhr) {
-        console.log(xhr);
-    }
+    // var caloriesMin = 500 //$("#caloriesMin ").val();
+    // var caloriesMax = 1000 //$("#caloriesMax ").val();
+
+    // let health = ["peanut-free ", "tree-nut-free"];
+
+    $.ajax({
+        url: queryURL,
+        method: "GET",
+        data: {
+            q,
+            app_id,
+            app_key,
+            cuisineType,
+            health,
+            // calories: `${caloriesMin}-${caloriesMax}`
+        },
+        success: function(response) {
+            console.log(response);
+
+            addRecipes(response.hits);
+
+        },
+        error: function(xhr) {
+            console.log(xhr);
+        }
+    });
 });
+
 
 function addRecipes(recipeArray) {
 
@@ -143,7 +155,7 @@ function addRecipes(recipeArray) {
             <h6 class="mb-0">
             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${index}" aria-expanded="true" aria-controls="collapse${index}">
              ${rLabel}
-              </button> Calories: ${rCals}kcal
+              </button> Calories: ${rCals}
               ${rTagList}
             </h6>
             </div>
@@ -232,8 +244,9 @@ function addRecipes(recipeArray) {
     }
 }
 
-function createChart(cNutrients, cName) {
 
+
+function createChart(cNutrients, cName) {
 
     am4core.ready(function() {
 
@@ -290,5 +303,4 @@ function createChart(cNutrients, cName) {
         chart.cursor = new am4charts.XYCursor();
 
     }); // end am4core.ready()
-
 }
