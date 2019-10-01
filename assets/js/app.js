@@ -1,7 +1,3 @@
-
-$("#submit").click(function(event) {
-  event.preventDefault();
-  
 $(document).on("click", ".sendEmail", function(event) {
 
     let emailLabel = $(this).attr("recipe-label");
