@@ -63,7 +63,7 @@ let queryURL = `https://api.edamam.com/search?`
 $("#submit").on("click", function() {
 
     search = $("#Name").val().trim();
-
+    $("#recipe-list").empty();
 
     let q = $("#Name").val().trim(); //$("#foodName ").val();
     let cuisineType = $('.dropdown-toggle').attr("title").split(","); //$("#cousineType ").val();
