@@ -1,7 +1,3 @@
-
-$("#submit").click(function(event) {
-  event.preventDefault();
-  
 $(document).on("click", ".sendEmail", function(event) {
 
     let emailLabel = $(this).attr("recipe-label");
@@ -304,5 +300,4 @@ function createChart(cNutrients, cName) {
         chart.cursor = new am4charts.XYCursor();
 
     }); // end am4core.ready()
-
 }
