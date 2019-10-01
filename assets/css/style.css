@@ -8,7 +8,9 @@
   position: sticky;
   top:0;
   width:100%;
-  z-index: 1;
+  z-index:-1;
+  background-color:#ffffff;
+  color:#700101; 
 } 
 
 .btn-primary{
@@ -22,6 +24,16 @@
 h1{
   font-size: 2.5vw;
 }
+
+#recipeLogo{
+  width: 175px;
+  height: 175px;
+}
+
+#header{
+  text-align: center;
+}
+
 
 
 .collapsible {
