@@ -1,11 +1,12 @@
 $(document).on("click", ".sendEmail", function(event) {
 
-    console.log("sending email");
     let emailLabel = $(this).attr("recipe-label");
 
     console.log(emailLabel);
 
     let emailAddress = $("#email").val();
+    console.log("sending email: " + );
+
     console.log(emailAddress);
 
     // code fragment
@@ -134,8 +135,6 @@ function addRecipes(recipeArray) {
         if (healthLabels.includes("Vegetarian")) {
             rTagList += `<span class="badge badge-pill badge-info">Vegetarian</span>`;
         }
-
-
 
         $("#recipe-list").append(
                 `<div class="accordion" id="recipe-list">
