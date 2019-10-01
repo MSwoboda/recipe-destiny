@@ -1,3 +1,7 @@
+
+$("#submit").click(function(event) {
+  event.preventDefault();
+  
 $(document).on("click", ".sendEmail", function(event) {
 
     let emailLabel = $(this).attr("recipe-label");
@@ -27,6 +31,7 @@ $(document).on("click", ".sendEmail", function(event) {
     }).fail(function(error) {
         console.log('Oops... ' + JSON.stringify(error));
     });
+
 
 });
 
@@ -140,7 +145,7 @@ function addRecipes(recipeArray) {
             <h6 class="mb-0">
             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${index}" aria-expanded="true" aria-controls="collapse${index}">
              ${rLabel}
-              </button> Calories: ${rCals}kcal
+              </button> Calories: ${rCals}
               ${rTagList}
             </h6>
             </div>
