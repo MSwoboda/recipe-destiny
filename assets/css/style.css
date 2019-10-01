@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+
   flex-wrap:wrap;
   padding: 4%;
   position: sticky;
