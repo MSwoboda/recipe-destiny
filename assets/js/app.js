@@ -30,12 +30,13 @@ let queryURL = `https://api.edamam.com/search?`
 //Query String
 
 $("#submit").on("click", function () {
-
+    $("#recipe-list").empty();
+    
     search = $("#Name").val().trim();
 
 
     let q = $("#Name").val().trim(); //$("#foodName ").val();
-    let cuisineType = $('.dropdown-toggle').attr("title").split(","); //$("#cousineType ").val();
+    let cuisineType = $('.dropdown-toggle').attr("title").toLowerCase().split(","); //$("#cousineType ").val();
     console.log(cuisineType);
     let health = $('.dropdown-toggle').attr("title").split(",");
     console.log(health);
