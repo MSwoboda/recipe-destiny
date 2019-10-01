@@ -1,40 +1,3 @@
-.flex-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  flex-wrap:wrap;
-  padding: 4%;
-  position: sticky;
-  top:0;
-  width:100%;
-  z-index:-1;
-  background-color:#ffffff;
-  color:#700101; 
-} 
-
-.btn-primary{
-  font-size: 30px;
-  width: 150px;
-
-}
-
-
-
-h1{
-  font-size: 2.5vw;
-}
-
-#recipeLogo{
-  width: 175px;
-  height: 175px;
-}
-
-#header{
-  text-align: center;
-}
-
-
-
 .collapsible {
     background-color: #777;
     color: white;
@@ -46,7 +9,6 @@ h1{
     outline: none;
     font-size: 15px;
 }
-
 
 .active,
 .collapsible:hover {

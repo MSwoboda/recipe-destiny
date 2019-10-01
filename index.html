@@ -15,12 +15,13 @@
 
   <title>Recipe Destiny</title>
 
+    <link rel="stylesheet" href="assets/css/style.css">
 
 
+    <title>Project 1</title>
 </head>
 
 <body>
-
 
 
 
@@ -35,11 +36,11 @@
       </div>
 
 
-    <div id="calories">
-      <h1>Calories</h1>
-      <input type="name" class="form-control-2" id="minCal" placeholder="Min" size="5">
-      <input type="name" class="form-control-2" id="maxCal" placeholder="Max" size="5">
-    </div>
+        <div id="calories">
+            <h1>Calories</h1>
+            <input type="name" class="form-control-2" id="minCal" placeholder="Min" size="5">
+            <input type="name" class="form-control-2" id="maxCal" placeholder="Max" size="5">
+        </div>
 
     <div id="cuisineType">
       <h1>Cuisine type</h1>
@@ -57,7 +58,7 @@
         <option value="japanese">Japanese</option>
         <option>...</option>
       </select>
-    </div>
+        </div>
 
 
     <div id="healthLabels">
@@ -71,52 +72,42 @@
         <option value="keto">Keto</option>
         <option value="kosher">Kosher</option>
       </select>
+        </div>
+
+        <div id="Submit">
+            <br>
+            <button type="button" class="btn btn-primary" id="submit">Submit</button>
+        </div>
+
     </div>
 
-    <div id ="Submit">
-         <br>
-        <button type ="button" class="btn btn-primary" id="submit">Submit</button>
-    </div>
- 
-  </div>
+    <br>
+    <div id="recipe-list"></div>
 
- 
 
-  <div id="food-table">
-      <ul class="list-group list-group-flush">
-          <li class="list-group-item">Chicken  Teriyaki    calories:500     Chineese        low-sodium </li>
-          <li class="list-group-item">Vegan Chili    calories:500     American        Vegan</li>
-          <li class="list-group-item">Fish & chips    calories:500     british        low-sodium</li>
-          <li class="list-group-item">Quesadilla    calories:500     Mexican        low-sodium</li>
-          <li class="list-group-item">Oodles & Noodles    calories:500     Chineese        low-sodium</li>
-          <li class="list-group-item">Vegan Chili    calories:500     American        Vegan</li>
-          <li class="list-group-item">Fish & chips    calories:500     british        low-sodium</li>
-          <li class="list-group-item">Quesadilla    calories:500     Mexican        low-sodium</li>
-          <li class="list-group-item">Vegan Chili    calories:500     American        Vegan</li>
-          <li class="list-group-item">Fish & chips    calories:500     british        low-sodium</li>
-          <li class="list-group-item">Quesadilla    calories:500     Mexican        low-sodium</li>
-          <li class="list-group-item">Vegan Chili    calories:500     American        Vegan</li>
-          
-        </ul>
-  </div>
 
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  ​
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/6.0.4/firebase-database.js"></script>
 
-  <script src="assets/js/bootstrap.js"></script>
-  <script src="assets/js/app.js"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
+
+    <!-- Resources -->
+    <script src="https://www.amcharts.com/lib/4/core.js"></script>
+    <script src="https://www.amcharts.com/lib/4/charts.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/material.js"></script>
+    <script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+
+    <script src="assets/js/bootstrap.js"></script>
+    <script src="assets/js/app.js"></script>
+
 
 </body>
 
