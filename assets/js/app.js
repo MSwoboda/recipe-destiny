@@ -28,18 +28,19 @@ $(document).on("click", ".sendEmail", function(event) {
         console.log('Oops... ' + JSON.stringify(error));
     });
 
+
 });
 
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
-(function () {
+(function() {
     'use strict';
-    window.addEventListener('load', function () {
+    window.addEventListener('load', function() {
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
         var forms = document.getElementsByClassName('needs-validation');
         // Loop over them and prevent submission
-        var validation = Array.prototype.filter.call(forms, function (form) {
-            form.addEventListener('submit', function (event) {
+        var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
                 if (form.checkValidity() === false) {
                     event.preventDefault();
                     event.stopPropagation();
@@ -70,7 +71,7 @@ $("#submit").on("click", function () {
     console.log(cuisineType);
     let health = $('.dropdown-toggle').attr("title").split(",");
     console.log(health);
-    
+
     // var caloriesMin = 500 //$("#caloriesMin ").val();
     // var caloriesMax = 1000 //$("#caloriesMax ").val();
 
@@ -87,13 +88,13 @@ $("#submit").on("click", function () {
             health,
             // calories: `${caloriesMin}-${caloriesMax}`
         },
-        success: function (response) {
+        success: function(response) {
             console.log(response);
 
             addRecipes(response.hits);
 
         },
-        error: function (xhr) {
+        error: function(xhr) {
             console.log(xhr);
         }
     });
@@ -118,7 +119,7 @@ function addRecipes(recipeArray) {
             rIngredientList += `<li>${recipeArray[index].recipe.ingredients[i].food} </li>`
         }
         rIngredientList += `</ul>`
-        ///
+            ///
 
         let rTagList = ``;
         let healthLabels = recipeArray[index].recipe.healthLabels; //Array
@@ -146,13 +147,13 @@ function addRecipes(recipeArray) {
 
 
         $("#recipe-list").append(
-            `<div class="accordion" id="recipe-list">
+                `<div class="accordion" id="recipe-list">
             <div class="card">
             <div class="card-header" id="heading${index}">
             <h6 class="mb-0">
             <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse${index}" aria-expanded="true" aria-controls="collapse${index}">
              ${rLabel}
-              </button> Calories: ${rCals}kcal
+              </button> Calories: ${rCals}
               ${rTagList}
             </h6>
             </div>
@@ -195,31 +196,31 @@ function addRecipes(recipeArray) {
     </div>
 </div>
 </div>`
-        ) //end of template
+            ) //end of template
 
         // Add data
         myData = [{
-            "country": "Carbs",
-            "visits": recipeArray[index].recipe.totalDaily.CHOCDF.quantity
-        }, {
-            "country": "Saturated Fat",
-            "visits": recipeArray[index].recipe.totalDaily.FASAT.quantity
-        }, {
-            "country": "Fat",
-            "visits": recipeArray[index].recipe.totalDaily.FAT.quantity
-        }, {
-            "country": "Iron",
-            "visits": recipeArray[index].recipe.totalDaily.FE.quantity
-        }, {
-            "country": "Fiber",
-            "visits": recipeArray[index].recipe.totalDaily.FIBTG.quantity
-        }, {
-            "country": "Sodium",
-            "visits": recipeArray[index].recipe.totalDaily.NA.quantity
-        }, {
-            "country": "Protein",
-            "visits": recipeArray[index].recipe.totalDaily.PROCNT.quantity
-        }
+                "country": "Carbs",
+                "visits": recipeArray[index].recipe.totalDaily.CHOCDF.quantity
+            }, {
+                "country": "Saturated Fat",
+                "visits": recipeArray[index].recipe.totalDaily.FASAT.quantity
+            }, {
+                "country": "Fat",
+                "visits": recipeArray[index].recipe.totalDaily.FAT.quantity
+            }, {
+                "country": "Iron",
+                "visits": recipeArray[index].recipe.totalDaily.FE.quantity
+            }, {
+                "country": "Fiber",
+                "visits": recipeArray[index].recipe.totalDaily.FIBTG.quantity
+            }, {
+                "country": "Sodium",
+                "visits": recipeArray[index].recipe.totalDaily.NA.quantity
+            }, {
+                "country": "Protein",
+                "visits": recipeArray[index].recipe.totalDaily.PROCNT.quantity
+            }
             // , {
             //     "country": "Spain",
             //     "visits": 711
@@ -292,7 +293,7 @@ function createChart(cNutrients, cName) {
         hoverState.properties.cornerRadiusTopRight = 0;
         hoverState.properties.fillOpacity = 1;
 
-        series.columns.template.adapter.add("fill", function (fill, target) {
+        series.columns.template.adapter.add("fill", function(fill, target) {
             return chart.colors.getIndex(target.dataItem.index);
         });
         chart.responsive.enable = true;
@@ -300,5 +301,4 @@ function createChart(cNutrients, cName) {
         chart.cursor = new am4charts.XYCursor();
 
     }); // end am4core.ready()
-
 }
