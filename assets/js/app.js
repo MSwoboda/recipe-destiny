@@ -1,9 +1,12 @@
 $(document).on("click", ".sendEmail", function(event) {
 
+    console.log("sending email");
     let emailLabel = $(this).attr("recipe-label");
-    let emailAddress = $("#email").val();
 
-    console.log("Sending wholesome recipe to: " + emailAddress);
+    console.log(emailLabel);
+
+    let emailAddress = $("#email").val();
+    console.log(emailAddress);
 
     // code fragment
     var data = {
@@ -23,9 +26,9 @@ $(document).on("click", ".sendEmail", function(event) {
         data: JSON.stringify(data),
         contentType: 'application/json'
     }).done(function() {
-        console.log('Your mail is sent!');
+        alert('Your mail is sent!');
     }).fail(function(error) {
-        console.log('Oops... ' + JSON.stringify(error));
+        alert('Oops... ' + JSON.stringify(error));
     });
 
 });
@@ -33,6 +36,7 @@ $(document).on("click", ".sendEmail", function(event) {
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 (function() {
+
     'use strict';
     window.addEventListener('load', function() {
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -75,7 +79,7 @@ $.ajax({
         q,
         app_id,
         app_key,
-        cuisineType,
+        cousineType,
         health,
         calories: `${caloriesMin}-${caloriesMax}`
     },
@@ -253,7 +257,7 @@ function createChart(cNutrients, cName) {
         categoryAxis.renderer.labels.template.horizontalCenter = "right";
         categoryAxis.renderer.labels.template.verticalCenter = "middle";
         categoryAxis.renderer.labels.template.rotation = 270;
-        categoryAxis.tooltip.disabled = true;
+        categoryAxis.tooltip.disabled = false;
         categoryAxis.renderer.minHeight = 100;
 
         var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
