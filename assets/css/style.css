@@ -1,25 +1,36 @@
 .flex-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    background-color: white;
-    flex-wrap: wrap;
-    padding: 4%;
-    position: sticky;
-    top: 0;
-    width: 100%;
-    z-index: +1;
-    background-color: #ffffff;
-    color: #700101;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+  flex-wrap:wrap;
+  position: sticky;
+  top:0;
+  width:100%;
+  z-index:-1;
+  background-color:#ffffff;
+  color:#700101; 
+} 
+
+.btn-danger{
+  font-size: 30px;
+  width: 150px;
+
 }
 
-.btn-primary {
-    font-size: 30px;
-    width: 150px;
+
+
+h1{
+  font-size: 2.5vw;
+  font-family: 'Indie Flower', cursive;
+
 }
 
-h1 {
-    font-size: 2.5vw;
+#recipeLogo{
+  width: 140px;
+  height: 140px;
+
 }
 
 #recipeLogo {
