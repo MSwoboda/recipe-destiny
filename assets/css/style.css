@@ -3,7 +3,6 @@
   align-items: center;
   justify-content: space-evenly;
   flex-wrap:wrap;
-  padding: 4%;
   position: sticky;
   top:0;
   width:100%;
@@ -12,7 +11,7 @@
   color:#700101; 
 } 
 
-.btn-primary{
+.btn-danger{
   font-size: 30px;
   width: 150px;
 
@@ -25,8 +24,8 @@ h1{
 }
 
 #recipeLogo{
-  width: 175px;
-  height: 175px;
+  width: 140px;
+  height: 140px;
 }
 
 #header{
