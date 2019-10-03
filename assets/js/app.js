@@ -52,42 +52,67 @@ $(document).on("click", ".sendEmail", function(event) {
 });
 
 
-//Search String and API Data
-const app_id = "60bec2ae";
-const app_key = "411a6ce9c56353f66bde23265db8f48d";
-let queryURL = `https://api.edamam.com/search?`
 
 //Get Form Data
 //Query String
 
-$("#submit").on("click", function () {
+$("#submit").on("click", function() {
     $("#recipe-list").empty();
-    
-    search = $("#Name").val().trim();
+    //Search String and API Data
+    const app_id = "60bec2ae";
+    const app_key = "411a6ce9c56353f66bde23265db8f48d";
+    let queryURL = `https://api.edamam.com/search?`
+
 
 
     let q = $("#Name").val().trim(); //$("#foodName ").val();
-    let cuisineType = $('.dropdown-toggle').attr("title").toLowerCase().split(","); //$("#cousineType ").val();
+    let cuisineType = $('#mealType > .bootstrap-select > button').attr("title").split(','); //$("#cousineType ").val();
     console.log(cuisineType);
-    let health = $('.dropdown-toggle').attr("title").split(",");
+    // cuisineType.forEach((elem) => {
+    //     cuisineTypeString += 'cuisineType' + ;
+    // });
+
+    let health = $('#healthLabels > .bootstrap-select > button').attr("title").split(',');
     console.log(health);
 
-    // var caloriesMin = 500 //$("#caloriesMin ").val();
-    // var caloriesMax = 1000 //$("#caloriesMax ").val();
+    let caloriesMin = $("#minCal").val();
+    let caloriesMax = $("#maxCal").val();
+    console.log(typeof caloriesMax)
+    console.log(typeof caloriesMin)
 
     // let health = ["peanut-free ", "tree-nut-free"];
 
+    let fullQueryString = `https://api.edamam.com/search?q=${q}&app_id=${app_id}&app_key=${app_key}&`
+    if (cuisineType[0] != 'Nothing selected') {
+        cuisineType.forEach((elem) => {
+            fullQueryString += 'mealType=' + elem + '&';
+        });
+    }
+
+    if (health[0] != 'Nothing selected') {
+        health.forEach((elem) => {
+            fullQueryString += 'health=' + elem + '&';
+        });
+    }
+
+
+    // if (caloriesMin != '' || caloriesMax != '') {
+    //     if (caloriesMin != '') {
+    //         fullQueryString += 'from=' + caloriesMin + '&'
+
+    //     }
+    //     if (caloriesMax != '') {
+    //         fullQueryString += 'to=' + caloriesMax + '&'
+
+    //     }
+    // }
+
+
+
+
     $.ajax({
-        url: queryURL,
+        url: fullQueryString,
         method: "GET",
-        data: {
-            q,
-            app_id,
-            app_key,
-            cuisineType,
-            health,
-            // calories: `${caloriesMin}-${caloriesMax}`
-        },
         success: function(response) {
             console.log(response);
 
@@ -200,44 +225,27 @@ function addRecipes(recipeArray) {
 
         // Add data
         myData = [{
-                "country": "Carbs",
-                "visits": recipeArray[index].recipe.totalDaily.CHOCDF.quantity
-            }, {
-                "country": "Saturated Fat",
-                "visits": recipeArray[index].recipe.totalDaily.FASAT.quantity
-            }, {
-                "country": "Fat",
-                "visits": recipeArray[index].recipe.totalDaily.FAT.quantity
-            }, {
-                "country": "Iron",
-                "visits": recipeArray[index].recipe.totalDaily.FE.quantity
-            }, {
-                "country": "Fiber",
-                "visits": recipeArray[index].recipe.totalDaily.FIBTG.quantity
-            }, {
-                "country": "Sodium",
-                "visits": recipeArray[index].recipe.totalDaily.NA.quantity
-            }, {
-                "country": "Protein",
-                "visits": recipeArray[index].recipe.totalDaily.PROCNT.quantity
-            }
-            // , {
-            //     "country": "Spain",
-            //     "visits": 711
-            // }, {
-            //     "country": "Netherlands",
-            //     "visits": 665
-            // }, {
-            //     "country": "Russia",
-            //     "visits": 580
-            // }, {
-            //     "country": "South Korea",
-            //     "visits": 443
-            // }, {
-            //     "country": "Canada",
-            //     "visits": 441
-            // }
-        ];
+            "country": "Carbs",
+            "visits": recipeArray[index].recipe.totalDaily.CHOCDF.quantity
+        }, {
+            "country": "Saturated Fat",
+            "visits": recipeArray[index].recipe.totalDaily.FASAT.quantity
+        }, {
+            "country": "Fat",
+            "visits": recipeArray[index].recipe.totalDaily.FAT.quantity
+        }, {
+            "country": "Iron",
+            "visits": recipeArray[index].recipe.totalDaily.FE.quantity
+        }, {
+            "country": "Fiber",
+            "visits": recipeArray[index].recipe.totalDaily.FIBTG.quantity
+        }, {
+            "country": "Sodium",
+            "visits": recipeArray[index].recipe.totalDaily.NA.quantity
+        }, {
+            "country": "Protein",
+            "visits": recipeArray[index].recipe.totalDaily.PROCNT.quantity
+        }];
         createChart(myData, "chart" + rLabel);
     }
 }
